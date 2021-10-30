@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
 @Entity
@@ -14,12 +15,15 @@ public class Movie {
     @GeneratedValue
     private Long id;
 
+    @NotNull
     private String name;
 
+    @NotNull
     private String year;
 
     @NotNull
     @Max(value=5)
+    @Min(value=0)
     private int rating;
 
     public Long getId() {
