@@ -1,7 +1,7 @@
 package com.sda.moviedb.controller;
 
 
-import com.sda.moviedb.repository.UserRepository;
+import com.sda.moviedb.service.UserService;
 import com.sda.moviedb.vo.UserRatingVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,7 +15,7 @@ import java.util.List;
 public class UserController {
 
     @Autowired
-    private UserRepository userRepository;
+    private UserService userService;
 
     @GetMapping("/users")
     public List<UserRatingVo> getAllUsers() {

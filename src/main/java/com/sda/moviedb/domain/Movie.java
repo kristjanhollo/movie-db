@@ -3,6 +3,8 @@ package com.sda.moviedb.domain;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class Movie {
@@ -16,6 +18,8 @@ public class Movie {
 
     private String year;
 
+    @NotNull
+    @Max(value=5)
     private int rating;
 
     public Long getId() {

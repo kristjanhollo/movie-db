@@ -21,7 +21,7 @@ public class UserService {
     public List<UserRatingVo> getAllUsersWIthMovieRatings() {
         List<UserInfoProjection> usersWithMovieRatings = userRepository.getUsersWithMovieRatings();
 
-        List<UserRatingVo> collect = usersWithMovieRatings.stream().distinct().map(m -> {
+        return usersWithMovieRatings.stream().distinct().map(m -> {
             UserRatingVo userRatingVo = new UserRatingVo();
             userRatingVo.setUserName(m.getUserName());
             userRatingVo.setEmail(m.getEmail());
@@ -29,7 +29,7 @@ public class UserService {
             Set<MovieVo> movieVoSet = new HashSet<>();
             MovieVo movieVo = new MovieVo();
             movieVo.setMovieName(m.getMovieName());
-            movieVo.setMovieRating(m.getMovieRating());
+            movieVo.setMovieRating(Integer.parseInt(m.getMovieRating()));
             movieVo.setUserRating(m.getUserRating());
             movieVo.setYear(m.getYear());
 
@@ -38,7 +38,5 @@ public class UserService {
 
             return userRatingVo;
         }).collect(Collectors.toList());
-
-        return collect;
     }
 }
