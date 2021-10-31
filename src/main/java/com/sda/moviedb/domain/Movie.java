@@ -5,6 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 @Entity
@@ -15,13 +16,12 @@ public class Movie {
     @GeneratedValue
     private Long id;
 
-    @NotNull
+    @NotEmpty(message = "*Please insert Movie name")
     private String name;
 
-    @NotNull
+    @NotEmpty(message = "*Please insert year")
     private String year;
 
-    @NotNull
     @Max(value=5)
     @Min(value=0)
     private int rating;
